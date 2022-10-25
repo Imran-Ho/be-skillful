@@ -7,28 +7,49 @@ import './Header.css'
 import logo from '../../Others/Images/logo.png';
 import { Image } from 'react-bootstrap';
 import { AuthUser } from '../../Context/UserContext';
+import { FaUserCircle, IconName } from "react-icons/fa";
 
 const Header = () => {
-    const {user} = useContext(AuthUser);
+    const { user, logOut } = useContext(AuthUser);
     return (
         <div>
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
                 <Container>
-                    <Image src={logo} style={{height: '50px',width:'100px', marginInline: '20px'}} rounded></Image>
+                    <Image src={logo} style={{ height: '50px', width: '100px', marginInline: '20px' }} rounded></Image>
                     <Navbar.Brand href="#home">Be-Skillful</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
                             <Nav.Link href="#features"></Nav.Link>
                             <Nav.Link href="#pricing"></Nav.Link>
-                            
+
                         </Nav>
                         <Nav className='navItems'>
                             <Link className='text-decoration-none m-3' to='/programs'>Programs</Link>
                             <Link className='text-decoration-none m-3'>FAQ</Link>
                             <Link className='text-decoration-none m-3' to='/blog'>Blog</Link>
-                            <Link className='text-decoration-none m-3' to='/login'>Login</Link>
-                            <p className='text-light'>{user?.displayName}</p>
+                        </Nav>
+                        <Nav>
+                            {
+                                user?.uid ?
+                                    <Link onClick={logOut}><button className='btn btn-dark'>Sign Out</button></Link>
+                                    :
+                                    <Link className='text-decoration-none m-3' to='/login'>Login</Link>
+                            }
+                            {
+                                user?.photoURL ?
+                                    <>
+                                        <Image
+                                            className=''
+                                            style={{ height: '30px', marginLeft: '20px' }}
+                                            roundedCircle
+                                            src={user.photoURL}
+                                            title={user.displayName}
+                                        ></Image>
+                                    </>
+                                    :
+                                    <FaUserCircle></FaUserCircle>
+                            }
 
                         </Nav>
                     </Navbar.Collapse>
