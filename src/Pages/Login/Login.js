@@ -25,7 +25,7 @@ const Login = () => {
                     Submit
                 </Button>
                 <div>
-                    <p>don't have an account? <Link to='/register'>create an account</Link></p>
+                    <p>don't have an account? <Link to='/register'>create an account.</Link></p>
                 </div>
             </Form>
         </div>
