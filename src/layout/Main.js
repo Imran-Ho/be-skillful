@@ -7,6 +7,7 @@ const Main = () => {
     return (
         <div>
             <Header></Header>
+            
             <Container>
                 <Row>
                     <Col lg='5'>
