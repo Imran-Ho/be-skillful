@@ -13,6 +13,10 @@ const UserContext = ({children}) => {
     const googleSignIn = (provider) =>{
         return signInWithPopup(auth, provider)
     }
+// github sign in function
+    const githubSignIn = (provider) =>{
+        return signInWithPopup(auth, provider)
+    }
 // create new User
     const createNewUser = (email, password) =>{
         return createUserWithEmailAndPassword(auth, email, password)
@@ -48,6 +52,7 @@ const UserContext = ({children}) => {
     const authInfo = {
         user, 
         googleSignIn,
+        githubSignIn,
         logOut,
         createNewUser,
         loginWithEmailPassword,

@@ -1,4 +1,4 @@
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -7,8 +7,9 @@ import { AuthUser } from '../../Context/UserContext';
 import './Login.css';
 
 const Login = () => {
-    const {googleSignIn, loginWithEmailPassword} = useContext(AuthUser)
+    const {googleSignIn, githubSignIn, loginWithEmailPassword} = useContext(AuthUser)
     const googleProvider = new GoogleAuthProvider();
+    const githupProvider = new GithubAuthProvider();
     const [error, setError] = useState('')
 
 // login with email and password
@@ -33,6 +34,17 @@ const Login = () => {
 // login with google
     const googleClick = () =>{
         googleSignIn(googleProvider)
+        .then(result =>{
+            const user = result.user
+            console.log(user)
+        })
+        .catch(error =>{
+            setError(error.message)
+        })
+    }
+// login with github
+    const githubClick = () =>{
+        githubSignIn(githupProvider)
         .then(result =>{
             const user = result.user
             console.log(user)
@@ -68,7 +80,7 @@ const Login = () => {
                     <hr />
                     <Link onClick={googleClick}><button className='btn btn-dark mb-2 w-50'>Sign in with Google </button></Link>
                     <br />
-                    <Link><button className='btn btn-light w-50'>Sign in with GitHub </button></Link>
+                    <Link onClick={githubClick}><button className='btn btn-light w-50'>Sign in with GitHub </button></Link>
                 </div>
             </Form>
         </div>
