@@ -4,12 +4,15 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import './Header.css'
+import logo from '../../Others/Images/logo.png';
+import { Image } from 'react-bootstrap';
 
 const Header = () => {
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container>
+                    <Image src={logo} style={{height: '50px', marginInline: '20px'}} rounded></Image>
                     <Navbar.Brand href="#home">Be-Skillful</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
