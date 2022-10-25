@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
@@ -6,7 +6,9 @@ import { AuthUser } from '../../Context/UserContext';
 
 
 const Register = () => {
-    const {createNewUser} = useContext(AuthUser)
+    const {createNewUser, userProfileUpdate} = useContext(AuthUser)
+    const [error, setError] = useState('')
+    const [successful, setSuccessful] = useState('')
 
     const newUserCreate = (event) =>{
         event.preventDefault()
@@ -21,10 +23,20 @@ const Register = () => {
             const user = result.user;
             console.log(user)
             form.reset()
+            profileUpdate(name, photoURL)
+            setSuccessful('successfully created')
+
         })
-        .catch(error => {console.error(error)})
-
-
+        .catch(error => {setError(error.message)})
+    }
+// profile update
+    const profileUpdate = (name, photoURL) =>{
+        const profile = {displayName: name, photoURL: photoURL};
+        userProfileUpdate(profile)
+        .then(result =>{
+            setSuccessful('successfully created')
+        })
+        .catch(error => {setError(error.message)})
     }
     return (
         <div className='login-container'>
@@ -49,6 +61,10 @@ const Register = () => {
             <Button variant="primary" type="submit">
                 Submit
             </Button>
+            <Form.Text className="text-warning m-3">
+                        {error}
+                        {successful}
+                    </Form.Text>
             <div>
                 <p>already have an account <Link to='/login'>Log in please.</Link></p>
             </div>
