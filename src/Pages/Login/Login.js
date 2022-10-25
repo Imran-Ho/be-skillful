@@ -1,5 +1,5 @@
 import { GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
@@ -7,9 +7,29 @@ import { AuthUser } from '../../Context/UserContext';
 import './Login.css';
 
 const Login = () => {
-    const {googleSignIn} = useContext(AuthUser)
-    const googleProvider = new GoogleAuthProvider()
+    const {googleSignIn, loginWithEmailPassword} = useContext(AuthUser)
+    const googleProvider = new GoogleAuthProvider();
+    const [error, setError] = useState('')
 
+// login with email and password
+    const useEmailAndPassword = (event) =>{
+        event.preventDefault()
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email,password)
+        loginWithEmailPassword(email, password)
+        .then(result =>{
+            const user = result.user;
+            form.reset()
+            console.log(user)
+        })
+        .catch(error => {
+            setError(error.message)
+        })
+
+
+    }
 // login with google
     const googleClick = () =>{
         googleSignIn(googleProvider)
@@ -18,28 +38,28 @@ const Login = () => {
             console.log(user)
         })
         .catch(error =>{
-            console.error(error)
+            setError(error.message)
         })
     }
     return (
         <div className='login-container'>
-            <Form>
+            <Form onSubmit={useEmailAndPassword}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
-                    <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                    </Form.Text>
+                    <Form.Control type="email" name='email' placeholder="Enter email" required/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control type="password" name='password' placeholder="Password" />
                 </Form.Group>
 
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
+                    <Form.Text className="text-warning m-3">
+                        {error}
+                    </Form.Text>
                 <div>
                     <p>don't have an account? <Link to='/register'>create an account.</Link></p>
                 </div>
