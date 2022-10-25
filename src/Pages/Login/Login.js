@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { Link } from 'react-router-dom';
 import './Login.css';
 
 const Login = () => {
@@ -23,6 +24,9 @@ const Login = () => {
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
+                <div>
+                    <p>don't have an account? <Link to='/register'>create an account</Link></p>
+                </div>
             </Form>
         </div>
     );
