@@ -2,6 +2,8 @@ import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Col, Container, Row } from 'react-bootstrap';
+import Home from '../Home/Home';
 
 const Courses = () => {
     const courses = useLoaderData()
@@ -9,8 +11,13 @@ const Courses = () => {
     // console.log(subject_id)
     return (
         <div>
-        
-            <Card>
+            <Container>
+            <Row>
+                <Col lg='5'>
+                    <Home></Home>
+                </Col>
+                <Col lg='7'>
+            	  <Card>
                 <Card.Header>{title}</Card.Header>
                 <Card.Body>
                 <Card.Img variant="top" src={image} />
@@ -23,6 +30,11 @@ const Courses = () => {
                     </Link>
                 </Card.Body>
             </Card>
+                </Col>
+            </Row>
+        </Container>
+        
+          
         </div>
     );
 };

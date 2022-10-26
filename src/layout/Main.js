@@ -10,14 +10,7 @@ const Main = () => {
             <Header></Header>
             
             <Container>
-                <Row>
-                    <Col lg='5'>
-                    <Home></Home>
-                    </Col>
-                    <Col lg='7'>
-                        <Outlet></Outlet>
-                    </Col>
-                </Row>
+                <Outlet></Outlet>
             </Container>
         </div>
     );

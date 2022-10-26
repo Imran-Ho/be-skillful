@@ -8,13 +8,14 @@ import Home from "../Pages/Home/Home";
 import Checkout from "../Pages/Checkout/Checkout";
 import PrivateRoute from "../Pages/PrivateRoute/PrivateRoute";
 import Courses from "../Pages/Courses/Courses";
+import FrontPage from "../Pages/FrontPage/FrontPage";
 
 export const routers = createBrowserRouter([
   {
     path: '/', element: <Main></Main>,
     children:[
       {
-        path: '/', element: <Home></Home>,
+        path: '/', element: <FrontPage></FrontPage>,
       },
       {
         path: '/programs', element: <Programs></Programs>,

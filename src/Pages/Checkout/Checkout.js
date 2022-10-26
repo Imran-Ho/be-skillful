@@ -5,7 +5,7 @@ import './Checkout.css';
 const Checkout = () => {
     const items = useLoaderData()
     const {title} = items;
-    console.log(items)
+    // console.log(items)
     return (
         <div className='checkout-sec'>
             <p>Get This Course at no cost giving your name in the following.</p>
