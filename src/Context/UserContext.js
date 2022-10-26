@@ -7,7 +7,8 @@ const auth = getAuth(app)
 
 const UserContext = ({children}) => {
     
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
 // google sign in function
     const googleSignIn = (provider) =>{
@@ -42,6 +43,7 @@ const UserContext = ({children}) => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser)=>{
             // console.log('current user', currentUser)
             setUser(currentUser)
+            setLoading(false)
         })
         return ()=>{
             unsubscribe()
@@ -56,7 +58,8 @@ const UserContext = ({children}) => {
         logOut,
         createNewUser,
         loginWithEmailPassword,
-        userProfileUpdate
+        userProfileUpdate,
+        loading
     }
     return (
         <AuthUser.Provider value={authInfo}>
