@@ -2,7 +2,7 @@ import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthUser } from '../../Context/UserContext';
 import './Login.css';
 
@@ -11,6 +11,9 @@ const Login = () => {
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
     const [error, setError] = useState('')
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state.from.pathname || '/';
 
 // login with email and password
     const useEmailAndPassword = (event) =>{
@@ -22,8 +25,9 @@ const Login = () => {
         loginWithEmailPassword(email, password)
         .then(result =>{
             const user = result.user;
-            form.reset()
             console.log(user)
+            form.reset()
+            navigate(from, {replace: true})
         })
         .catch(error => {
             setError(error.message)
