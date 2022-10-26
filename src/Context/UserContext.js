@@ -12,29 +12,35 @@ const UserContext = ({children}) => {
 
 // google sign in function
     const googleSignIn = (provider) =>{
+        setLoading(true)
         return signInWithPopup(auth, provider)
     }
 // github sign in function
     const githubSignIn = (provider) =>{
+        setLoading(true)
         return signInWithPopup(auth, provider)
     }
 // create new User
     const createNewUser = (email, password) =>{
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
 // sign in with email and password
     const loginWithEmailPassword = (email, password) =>{
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
 // update profile
     const userProfileUpdate = (profile) =>{
+        setLoading(true)
         return updateProfile(auth.currentUser,profile)
     }
 
 // log out function
     const logOut = () =>{
+        setLoading(true)
         return signOut(auth)
     }
 

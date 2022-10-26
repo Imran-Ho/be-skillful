@@ -5,9 +5,9 @@ import Blog from "../Pages/Blog/Blog";
 import Programs from "../Pages/Programs/Programs";
 import Register from "../Pages/Register/Register";
 import Home from "../Pages/Home/Home";
-import Course from "../Pages/Course/Course";
 import Checkout from "../Pages/Checkout/Checkout";
 import PrivateRoute from "../Pages/PrivateRoute/PrivateRoute";
+import Courses from "../Pages/Courses/Courses";
 
 export const routers = createBrowserRouter([
   {
@@ -20,9 +20,10 @@ export const routers = createBrowserRouter([
         path: '/programs', element: <Programs></Programs>,
       },
       {
-        path: '/courses/:id', element: <Course></Course>,
+        path: '/courses/:id', element: <Courses></Courses>,
         loader: ({params}) => fetch(`http://localhost:5000/subjects/${params.id}`)
       },
+     
       {
         path: '/checkout/:id', element: <PrivateRoute><Checkout></Checkout></PrivateRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/item/${params.id}`)

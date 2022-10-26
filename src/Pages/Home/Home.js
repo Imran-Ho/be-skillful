@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link,} from 'react-router-dom';
+import Details from '../Details/Details';
 
 const Home = () => {
     const [courses, setCourses] = useState([])
@@ -14,10 +15,11 @@ const Home = () => {
         <h3>Programs we Provide:</h3>
         <div>
             {
-                courses?.map(course => <div
+                courses?.map(course => <Details
                     key={course.id}
                     course={course}
-                ><Link to={`/courses/${course.id}`}>{course.name}</Link></div>)
+                ></Details>)
+
             }
         </div>
     </div>
