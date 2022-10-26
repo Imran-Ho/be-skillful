@@ -1,0 +1,20 @@
+.checkout-sec{
+    margin:20px auto;
+    padding-top: 40px;
+    background-color: dimgray;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.checkout-form{
+    padding: 40px;
+}
+.checkout-form label{
+    display: block;
+}
+.checkout-form input{
+    border: none;
+    width: 50%;
+    padding: 5px 10px;
+}

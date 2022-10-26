@@ -9,7 +9,7 @@ import './Login.css';
 const Login = () => {
     const {googleSignIn, githubSignIn, loginWithEmailPassword} = useContext(AuthUser)
     const googleProvider = new GoogleAuthProvider();
-    const githupProvider = new GithubAuthProvider();
+    const githubProvider = new GithubAuthProvider();
     const [error, setError] = useState('')
 
 // login with email and password
@@ -44,7 +44,7 @@ const Login = () => {
     }
 // login with github
     const githubClick = () =>{
-        githubSignIn(githupProvider)
+        githubSignIn(githubProvider)
         .then(result =>{
             const user = result.user
             console.log(user)

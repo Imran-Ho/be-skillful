@@ -1,9 +1,13 @@
 import React from 'react';
 
+
 const Programs = () => {
+    
+   
+    // console.log(courses)
     return (
         <div>
-            <h3>programs</h3>
+            
         </div>
     );
 };
