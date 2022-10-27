@@ -8,14 +8,15 @@ import logo from '../../Others/Images/logo.png';
 import { Image } from 'react-bootstrap';
 import { AuthUser } from '../../Context/UserContext';
 import { FaUserCircle} from "react-icons/fa";
+import { MDBSwitch } from 'mdb-react-ui-kit';
 
-const Header = () => {
+const Header = ({darkMode}) => {
     const { user, logOut } = useContext(AuthUser);
     return (
         <div>
-            <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+            <Navbar collapseOnSelect expand="lg" bg="" variant="">
                 <Container>
-                    <Image src={logo} style={{ height: '50px', width: '100px', marginInline: '20px' }} rounded></Image>
+                    <Image src={logo} style={{ height: '50px', width: '100px', marginInline: '20px'}} rounded></Image>
                     <Navbar.Brand  href="/">Be-Skillful</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
@@ -26,6 +27,9 @@ const Header = () => {
                             <Link className='text-decoration-none m-3' to='/programs'>Programs</Link>
                             <Link className='text-decoration-none m-3'>FAQ</Link>
                             <Link className='text-decoration-none m-3' to='/blog'>Blog</Link>
+                            <Link className='text-decoration-none m-3'><div><MDBSwitch id='flexSwitchCheckDefault' onClick={darkMode} label='Dark/Light' /></div></Link>
+                            
+                                                  
 
                         </Nav>
                         

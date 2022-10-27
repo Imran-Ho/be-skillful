@@ -4,7 +4,7 @@ import Login from "../Pages/Login/Login";
 import Blog from "../Pages/Blog/Blog";
 import Programs from "../Pages/Programs/Programs";
 import Register from "../Pages/Register/Register";
-import Home from "../Pages/Home/Home";
+import Home from "../Pages/LeftSideBar/LeftSideBar";
 import Checkout from "../Pages/Checkout/Checkout";
 import PrivateRoute from "../Pages/PrivateRoute/PrivateRoute";
 import Courses from "../Pages/Courses/Courses";
@@ -22,12 +22,12 @@ export const routers = createBrowserRouter([
       },
       {
         path: '/courses/:id', element: <Courses></Courses>,
-        loader: ({params}) => fetch(`http://localhost:5000/subjects/${params.id}`)
+        loader: ({params}) => fetch(`https://be-skillful-server.vercel.app/subjects/${params.id}`)
       },
      
       {
         path: '/checkout/:id', element: <PrivateRoute><Checkout></Checkout></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/item/${params.id}`)
+        loader: ({params}) => fetch(`https://be-skillful-server.vercel.app/item/${params.id}`)
       },
       {
         path: '/blog', element: <Blog></Blog>

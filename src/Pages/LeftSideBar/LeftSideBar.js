@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Link,} from 'react-router-dom';
 import Details from '../Details/Details';
 
-const Home = () => {
+const LeftSideBar = () => {
     const [courses, setCourses] = useState([])
 
     useEffect(()=>{
-        fetch('http://localhost:5000/courses')
+        fetch('https://be-skillful-server.vercel.app/courses')
         .then(res => res.json())
         .then(data => setCourses(data))
     },[])
@@ -26,4 +26,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default LeftSideBar;

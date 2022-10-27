@@ -3,7 +3,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Col, Container, Row } from 'react-bootstrap';
-import Home from '../Home/Home';
+import LeftSideBar from '../LeftSideBar/LeftSideBar';
 
 const Courses = () => {
     const courses = useLoaderData()
@@ -14,7 +14,7 @@ const Courses = () => {
             <Container>
             <Row>
                 <Col lg='5'>
-                    <Home></Home>
+                    <LeftSideBar></LeftSideBar>
                 </Col>
                 <Col lg='7'>
             	  <Card>
