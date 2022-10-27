@@ -2,3 +2,7 @@
     text-decoration: none;
     margin-left: 10px;
 }
+.title-name{
+    color: rgb(109, 109, 235);
+    z-index: -1;
+}

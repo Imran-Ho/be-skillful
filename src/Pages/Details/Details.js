@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Details = ({course}) => {
     const {name, id} = course;
     return (
-        <div>
+        <div className='mt-2'>
             <Link to={`/courses/${id}`}>
                 <Card style={{ width: '18rem', textDecoration: 'none' }}>
                     <Card.Body>

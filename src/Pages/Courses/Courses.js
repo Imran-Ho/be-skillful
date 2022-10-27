@@ -6,19 +6,22 @@ import { Col, Container, Row } from 'react-bootstrap';
 import LeftSideBar from '../LeftSideBar/LeftSideBar';
 import jsPDF from 'jspdf';
 import logo from '../../Others/Images/logo.png'
+import { FaFileDownload, IconName } from "react-icons/fa";
 
 const Courses = () => {
     const courses = useLoaderData()
     const {subject_id, title, details, image } = courses;
     // console.log(subject_id)
+
+// pdf section
     const pdfGenerate = () =>{
         const doc = new jsPDF('landscape', 'px', 'a4', 'false');
-        doc.addImage(logo, 'PNG', 60,20,500,400)
+        doc.text(100,60,'This is an online Learning platform')
+        doc.text(100,80,'Each and every one can get his onw desired course from here')
+        doc.text(100,100,'If needed please visit to our web site @ https://be-skillful.web.app/')
         doc.addPage()
-        doc.text(100,60,'Name:')
-        doc.text(100,80,'Email:')
-        doc.text(100,100,'Phone Number:')
-
+        doc.addImage(logo, 'PNG', 60,20,500,400)
+        
         doc.save('a.pdf')
     }
     return (
@@ -32,12 +35,11 @@ const Courses = () => {
             	  <Card>
                 <Card.Header className='d-flex justify-content-between'>
                     <div>{title}</div>
-                    <button onClick={pdfGenerate}>PDF Download</button>
-                
+                    <button  onClick={pdfGenerate}><FaFileDownload className='w-20'></FaFileDownload></button>
                 </Card.Header>
                 <Card.Body>
                 <Card.Img variant="top" src={image} />
-                    <Card.Title>Special title treatment</Card.Title>
+                    <Card.Title></Card.Title>
                     <Card.Text>
                         {details}
                     </Card.Text>

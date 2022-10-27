@@ -8,7 +8,7 @@ const Checkout = () => {
     // console.log(items)
     return (
         <div className='checkout-sec'>
-            <p>Get This Course at no cost giving your name in the following.</p>
+            <h5>Get This Course at no cost giving your name in the following.</h5>
             <br />
             <h4 className='bg-primary'>Course Name: <span>{title}</span></h4>
          <form className='checkout-form'>
@@ -17,7 +17,7 @@ const Checkout = () => {
             <label htmlFor="">Last Name:</label>
             <input className='' type="text" placeholder='Cook' />
             <label htmlFor=""></label>
-            <button className='btn btn-primary w-50 mt-3'>Submit</button>
+            <button className='btn btn-primary lg:w-50 mt-3'>Submit</button>
          </form>
         </div>
     );

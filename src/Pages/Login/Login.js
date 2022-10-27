@@ -41,6 +41,7 @@ const Login = () => {
         .then(result =>{
             const user = result.user
             console.log(user)
+            navigate(from, {replace: true})
         })
         .catch(error =>{
             setError(error.message)
@@ -52,13 +53,15 @@ const Login = () => {
         .then(result =>{
             const user = result.user
             console.log(user)
+            navigate(from, {replace: true})
         })
         .catch(error =>{
             setError(error.message)
         })
     }
     return (
-        <div className='login-container'>
+        <div>
+            <div className='login-container'>
             <Form onSubmit={useEmailAndPassword}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
@@ -82,11 +85,12 @@ const Login = () => {
                 <div className='text-center'>
                     <p>Alternative</p>
                     <hr />
-                    <Link onClick={googleClick}><button className='btn btn-dark mb-2 w-50'>Sign in with Google </button></Link>
+                    <Link onClick={googleClick}><button className='btn btn-dark mb-2 lg:w-50'>Sign in with Google </button></Link>
                     <br />
-                    <Link onClick={githubClick}><button className='btn btn-light w-50'>Sign in with GitHub </button></Link>
+                    <Link onClick={githubClick}><button className='btn btn-light lg:w-50'>Sign in with GitHub </button></Link>
                 </div>
             </Form>
+        </div>
         </div>
     );
 };

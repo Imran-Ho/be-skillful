@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthUser } from '../../Context/UserContext';
 
 
@@ -9,6 +9,7 @@ const Register = () => {
     const {createNewUser, userProfileUpdate} = useContext(AuthUser)
     const [error, setError] = useState('')
     const [successful, setSuccessful] = useState('')
+    const navigate = useNavigate()
 
     const newUserCreate = (event) =>{
         event.preventDefault()
@@ -25,6 +26,7 @@ const Register = () => {
             form.reset()
             profileUpdate(name, photoURL)
             setSuccessful('successfully created')
+            navigate('/')
 
         })
         .catch(error => {setError(error.message)})

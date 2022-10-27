@@ -12,7 +12,7 @@ const LeftSideBar = () => {
     },[])
     return (
         <div>
-        <h3>Programs we Provide:</h3>
+        <h4 className='mt-2'>Programs we Provide:</h4>
         <div>
             {
                 courses?.map(course => <Details

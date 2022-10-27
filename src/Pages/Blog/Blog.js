@@ -3,7 +3,7 @@ import React from 'react';
 const Blog = () => {
     return (
         <div>
-            <h3>Some React-JS related Questions' Answer are given below</h3>
+            <h3 className='my-5'>Some React-JS related Questions</h3>
             <h5>What is CORS?</h5>
             <br />
             <h6>

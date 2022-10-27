@@ -7,54 +7,55 @@ import './Header.css'
 import logo from '../../Others/Images/logo.png';
 import { Image } from 'react-bootstrap';
 import { AuthUser } from '../../Context/UserContext';
-import { FaUserCircle} from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
 import { MDBSwitch } from 'mdb-react-ui-kit';
 
-const Header = ({darkMode}) => {
+const Header = ({ darkMode }) => {
     const { user, logOut } = useContext(AuthUser);
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" bg="" variant="">
                 <Container>
-                    <Image src={logo} style={{ height: '50px', width: '100px', marginInline: '20px'}} rounded></Image>
-                    <Navbar.Brand  href="/">Be-Skillful</Navbar.Brand>
+                    <Image src={logo} style={{ height: '50px', width: '100px', marginInline: '20px' }} rounded></Image>
+                    <Navbar.Brand href="/" style={{color: 'blue'}}>Be-Skillful</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
                             <Nav.Link href="#features"></Nav.Link>
                             <Nav.Link href="#pricing"></Nav.Link>
                             <Link className='text-decoration-none m-3' to='/'>Home</Link>
-                            <Link className='text-decoration-none m-3' to='/programs'>Programs</Link>
+                            <Link className='text-decoration-none m-3' to='/course'>Courses</Link>
                             <Link className='text-decoration-none m-3'>FAQ</Link>
                             <Link className='text-decoration-none m-3' to='/blog'>Blog</Link>
-                            <div><MDBSwitch id='flexSwitchCheckDefault' onClick={darkMode} label='Light/Dark' /></div>
-                            
-                                                  
-
                         </Nav>
-                        
-                        <Nav className='navItems'>
-                            {
-                                user?.uid ?
-                                    <Link onClick={logOut}><button className='btn btn-dark'>Sign Out</button></Link>
-                                    :
-                                    <Link className='text-decoration-none m-3' to='/login'>Login</Link>
-                            }
-                            {
-                                user?.photoURL ?
-                                    <>
-                                        <Image
-                                            className=''
-                                            style={{ height: '30px', marginLeft: '20px' }}
-                                            roundedCircle
-                                            src={user.photoURL}
-                                            title={user.displayName}
-                                        ></Image>
-                                    </>
-                                    :
-                                    <FaUserCircle></FaUserCircle>
-                            }
 
+                        <Nav className='navItems'>
+                        <div><MDBSwitch id='flexSwitchCheckDefault' onClick={darkMode} label='Light/Dark' /></div>
+                            <div className='mx-2'>
+                                {
+                                    user?.uid ?
+                                        <Link onClick={logOut}><button className='btn btn-dark'>Sign Out</button></Link>
+                                        :
+                                        <Link className='text-decoration-none m-3' to='/login'>Login</Link>
+                                }
+                            </div>
+                            <div>
+                                {
+                                    user?.photoURL ?
+                                        <>
+                                            <Image
+                                                className='mx-2'
+                                                style={{ height: '30px', marginLeft: '20px' }}
+                                                roundedCircle
+                                                src={user.photoURL}
+                                                title={user.displayName}
+                                            ></Image>
+                                        </>
+                                        :
+                                        <FaUserCircle></FaUserCircle>
+                                }
+
+                            </div>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
