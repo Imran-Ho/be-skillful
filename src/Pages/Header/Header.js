@@ -27,7 +27,7 @@ const Header = ({darkMode}) => {
                             <Link className='text-decoration-none m-3' to='/programs'>Programs</Link>
                             <Link className='text-decoration-none m-3'>FAQ</Link>
                             <Link className='text-decoration-none m-3' to='/blog'>Blog</Link>
-                            <Link className='text-decoration-none m-3'><div><MDBSwitch id='flexSwitchCheckDefault' onClick={darkMode} label='Dark/Light' /></div></Link>
+                            <div><MDBSwitch id='flexSwitchCheckDefault' onClick={darkMode} label='Light/Dark' /></div>
                             
                                                   
 
